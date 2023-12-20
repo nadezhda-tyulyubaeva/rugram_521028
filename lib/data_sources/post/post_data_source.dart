@@ -26,9 +26,31 @@ class PostDataSource {
     return model;
   }
 
-  Future<void> getPostsByUser() async {}
+  Future<ListModel<PostPreview>> getPostsByUserId({required String id}) async {
+    final result = await dio.get(
+      '/user/$id/post'
+    );
 
-  Future<void> getPostsByTag() async {}
+    final model = source_source_list_model.ListModel.fromJson(result.data)
+        .toEntity<PostPreview>(
+          (a) => source_post_preview.PostPreview.fromJson(a).toEntity(),
+    ) as ListModel<PostPreview>;
+
+    return model;
+  }
+
+  Future<ListModel<PostPreview>> getPostsByTag({int? page, required String tag}) async {
+    final result = await dio.get(
+      '/tag/' + tag + '/post?limit=100',
+    );
+
+    final model = source_source_list_model.ListModel.fromJson(result.data)
+        .toEntity<PostPreview>(
+          (a) => source_post_preview.PostPreview.fromJson(a).toEntity(),
+    ) as ListModel<PostPreview>;
+
+    return model;
+  }
 
   Future<void> getPostById() async {}
 

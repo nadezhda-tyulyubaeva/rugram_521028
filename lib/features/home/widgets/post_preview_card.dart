@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rugram_521028/domain/models/post_preview.dart';
 import 'package:rugram_521028/ui/components/cached_network_image_component.dart';
 
+import '../../profile/profile_page.dart';
 import 'post_preview_info.dart';
 import 'user_preview_header.dart';
 
@@ -21,7 +23,10 @@ class PostPreviewCard extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          UserPreviewHeader(userPreview: postPreview.owner),
+          UserPreviewHeader(
+            userPreview: postPreview.owner,
+
+          ),
           CachedNetworkImageComponent(
             url: postPreview.image,
             fit: BoxFit.cover,
@@ -34,3 +39,4 @@ class PostPreviewCard extends StatelessWidget {
     );
   }
 }
+

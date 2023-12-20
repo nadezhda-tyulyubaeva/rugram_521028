@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/posts_cubit.dart';
 import 'widgets/post_preview_card.dart';
+import 'package:flutter/rendering.dart'; // Импорт необходимой библиотеки
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -57,8 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> listenScroll() async {
     final isPageEnd = _scrollController.offset + 150 > _scrollController.position.maxScrollExtent;
-    if (isPageEnd) {
+    final isScrollingDown = _scrollController.position.axisDirection == AxisDirection.down;
+
+    if (isPageEnd && isScrollingDown) {
       await _postsCubit.nextPage();
     }
   }
 }
+

@@ -84,3 +84,4 @@ class _MainScreenState extends State<MainScreen> {
     context.goNamed(navigationRoutes[index].name);
   }
 }
+

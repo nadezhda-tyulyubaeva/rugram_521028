@@ -14,3 +14,4 @@ class AppRoutes {
   // Profile
   static const profile = (name: 'profile', path: '/profile');
 }
+

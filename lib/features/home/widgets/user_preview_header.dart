@@ -7,6 +7,7 @@ import '../../profile/profile_page.dart';
 class UserPreviewHeader extends StatelessWidget {
   final UserPreview userPreview;
 
+
   const UserPreviewHeader({
     required this.userPreview,
     Key? key,
@@ -17,13 +18,6 @@ class UserPreviewHeader extends StatelessWidget {
     const double avatarRadius = 15;
 
     return GestureDetector(
-      onTap: () {
-        // Обработка нажатия на UserPreviewHeader
-        // Например, переход на страницу профиля пользователя
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => ProfilePage(user: userPreview)),
-        );
-      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
